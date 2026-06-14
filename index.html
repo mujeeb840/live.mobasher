@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>mobasher | بث اكوان نت</title>
+
+<link href="https://vjs.zencdn.net/8.5.2/video-js.css" rel="stylesheet" />
+
+<style>
+body{margin:0;background:#0b1020;color:#e5e7eb;font-family:system-ui,"Cairo",sans-serif}
+.container{max-width:1100px;margin:auto;padding:16px}
+.header{padding:14px 16px;display:flex;justify-content:space-between;align-items:center;
+background:rgba(16,24,39,.75);backdrop-filter:blur(8px);border-bottom:1px solid rgba(255,255,255,.07);}
+.brand{display:flex;align-items:center;gap:8px;font-weight:900;color:white;text-decoration:none}
+.brand img{width:38px;height:38px;border-radius:10px}
+.badge{background:linear-gradient(180deg,#22d3ee,#0ea5e9);color:#002933;
+padding:3px 10px;border-radius:999px;font-weight:800;margin-inline-start:6px;font-size:12px}
+
+.muted{color:#9ca3af;font-size:14px}
+
+.card{background:#101827;border-radius:18px;box-shadow:0 10px 30px rgba(0,0,0,.35);overflow:hidden;margin-top:14px}
+.card-header{padding:12px 16px;display:flex;justify-content:space-between;align-items:center;
+border-bottom:1px solid rgba(255,255,255,.08)}
+
+.video-shell{
+position:relative;
+aspect-ratio:16/9;
+background:#000;
+border-radius:14px;
+overflow:hidden;
+box-shadow:0 10px 25px rgba(0,0,0,.4);
+}
+
+/* تحسين فيديو فقط */
+.video-js{
+width:100%;
+height:100%;
+border-radius:14px;
+}
+
+/* التحكم */
+.controls{display:flex;gap:8px;flex-wrap:wrap;padding:12px;background:#0f172a;border-top:1px solid rgba(255,255,255,.08)}
+.btn{padding:10px 14px;border:none;border-radius:12px;font-weight:700;cursor:pointer}
+.btn-accent{background:#2563eb;color:white}
+.btn-warn{background:#f59e0b;color:black}
+
+/* القنوات */
+.channels{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));padding:14px}
+.channel{background:#0b1220;border:1px solid #1e2a49;border-radius:14px;padding:6px;display:flex;justify-content:center;align-items:center;cursor:pointer}
+.channel img{height:58px;width:auto;object-fit:contain;filter:drop-shadow(0 8px 20px rgba(0,0,0,.45))}
+@media(min-width:900px){ .channel img{height:64px;} }
+</style>
+</head>
+
+<body>
+
+<header class="header">
+<a class="brand" href="/"><img src="11.png" alt="">بث مباشر اكوان نت<span class="badge">Live</span></a>
+</header>
+
+<main class="container">
+
+<section class="card">
+<div class="card-header"><span>البث المباشر</span><span class="muted">HLS</span></div>
+
+<div class="video-shell">
+<video id="my-video"
+class="video-js vjs-big-play-centered"
+controls
+autoplay
+muted
+playsinline
+preload="auto"
+poster="T12.jpg"
+style="width:100%;height:100%;">
+
+<source src="hls/a0a.l.cIlchannel8-stream.Iil45.m3u8" type="application/x-mpegURL">
+</video>
+
+<div class="phone-label" style="
+position:absolute;top:10px;left:10px;
+background:rgba(0,0,0,.4);
+padding:6px 10px;border-radius:999px;font-size:12px;">
+Eng.Ahmed.Alsalmi · 772673039
+</div>
+</div>
+
+<div class="controls">
+<button class="btn" id="rewindBtn">⏪ 5 ثوان</button>
+<button class="btn btn-accent" id="playPauseBtn">⏯</button>
+<button class="btn" id="forwardBtn">⏩ 5 ثوان</button>
+<button class="btn btn-warn" id="fullscreenBtn">⛶</button>
+</div>
+</section>
+
+<section class="card">
+<div class="card-header"><span>اختر قناة</span><span class="muted">اضغط للتبديل</span></div>
+
+<div class="channels">
+
+<button class="channel" onclick="changeChannel('https://technomaster.pro/hls/a0a.l.cIlchannel1-stream.Iil45.m3u8')"><img src="Bein-Sport-1.png"></button>
+
+<button class="channel" onclick="changeChannel('https://technomaster.pro/hls/a0a.l.cIlchannel2-stream.Iil45.m3u8')"><img src="Bein-Sport-2.png"></button>
+
+<button class="channel" onclick="changeChannel('https://technomaster.pro/hls/a0a.l.cIlchannel3-stream.Iil45.m3u8')"><img src="Bein-Sport-3.png"></button>
+
+<button class="channel" onclick="changeChannel('https://technomaster.pro/hls/a0a.l.cIlchannel4-stream.Iil45.m3u8')"><img src="Bein-Sport-4.png"></button>
+
+<button class="channel" onclick="changeChannel('https://technomaster.pro/hls/a0a.l.cIlchannel5-stream.Iil45.m3u8')"><img src="Bein-Sport-5.png"></button>
+
+<button class="channel" onclick="changeChannel('https://technomaster.pro/hls/a0a.l.cIlchannel6-stream.Iil45.m3u8')"><img src="thmanya-1.png"></button>
+
+<button class="channel" onclick="changeChannel('https://technomaster.pro/hls/a0a.l.cIlchannel7-stream.Iil45.m3u8')"><img src="thmanya-2.png"></button>
+
+<button class="channel" onclick="changeChannel('https://technomaster.pro/hls/a0a.l.cIlchannel8-stream.Iil45.m3u8')"><img src="MBC_ACTION.png"></button>
+
+<button class="channel" onclick="changeChannel('https://technomaster.pro/hls/a0a.l.cIlchannel9-stream.Iil45.m3u8')"><img src="thmanya-3.png"></button>
+
+</div>
+</section>
+
+</main>
+
+<script src="https://vjs.zencdn.net/8.5.2/video.min.js"></script>
+
+<script>
+let player = videojs('my-video', {
+  autoplay: true,
+  muted: true,
+  controls: true,
+  fluid: true
+});
+
+/* تحسين التشغيل */
+player.ready(function(){
+  player.play().catch(()=>{});
+});
+
+/* تحكم */
+document.getElementById('rewindBtn').onclick=()=>player.currentTime(Math.max(0,player.currentTime()-5));
+document.getElementById('forwardBtn').onclick=()=>player.currentTime(player.currentTime()+5);
+
+document.getElementById('playPauseBtn').onclick=()=>{
+ player.paused()?player.play():player.pause();
+};
+
+document.getElementById('fullscreenBtn').onclick=()=>{
+ player.isFullscreen()?player.exitFullscreen():player.requestFullscreen();
+};
+
+/* تغيير القناة */
+function changeChannel(s){
+ player.src({type:'application/x-mpegURL',src:s});
+ player.play();
+}
+</script>
+
+</body>
+</html>
+
